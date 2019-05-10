@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="../css/regin.css"/>
+
+</head>
+<body>
+    
+    <div class="log_head">
+        <img src="../img/online12_03.jpg" class="img1">
+        <img src="../img/login2.jpg" class="img2">
+    </div>
+    <div class="beat">
+        <img src="../img/login5.jpg" class="img3">
+        <a href="javascript: ;"><img src="../img/login6.jpg" class="img4"></a>
+        <div class="fom">
+                <div class="login_top">
+                    <p class="p1">欢迎登录</p>
+                </div>
+                <div class="teet">
+                    <input class="username" type="text" value="" id="uname" placeholder="请输入手机号" />
+                    <br/>
+                    <input class="userpassword" type="password" id="upwd" value="" placeholder="请输入密码" />
+                    <br/>
+                    <br/>
+                    <button id="login">登录</button>	
+                    <br/>
+                    <input type="checkbox" value=""checked="checked" class="check"/>
+                    <p>我同意《服务条款》 和 《网易隐私政策》</p>
+                </div>
+            </div>
+    </div>
+    <iframe name="toppage" width=100% height=480px; marginwidth=0 marginheight=0 frameborder="no" border="0" scrolling="no" src="foot.html" ></iframe> 
+
+    
+</body>
+</html>
+<script src="../js/cookie.js"></script>
+<script src="../js/jquery-1.11.3.js"></script>
+<script>
+//页面加载取出cookie数据
+window.onload = function(){
+		let str = document.cookie;
+		let arr = str.split("; ");
+		let userTxt = "";
+		for( let i = 0 ; i  < arr.length ; i++ ){
+			let item = arr[i].split("=");
+			if( item[0] == "userinfo" ){
+				userTxt = item[1];
+			}
+		}
+		let userJson = JSON.parse( userTxt );
+        //登录功能实现
+		login.onclick = function(){
+			if( uname.value == userJson.uname && upwd.value == userJson.upwd ){
+                alert( "登录成功" );
+                location.href = "index.html";
+			}else{
+				alert( "登录失败" );
+			}
+		}
+	}
+</script>

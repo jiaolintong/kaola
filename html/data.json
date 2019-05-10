@@ -1,0 +1,80 @@
+{
+	"classify001":{
+		"name" : "每日上新",
+		"list" : [
+			{
+				"id" : "shop012",
+				"name" : "Love Cinema 美白滋润控油保湿黄瓜洗面奶 180毫升/支 2支",
+				"src" : "../img/beauty3.jpg",
+				"price" : "50",
+				"cprice":"130"
+			},
+			{
+				"id" : "shop0012",
+				"name" : "Puritan Pride 普丽普莱 双倍葡萄籽精华胶囊 100粒/瓶 2瓶",
+				"src" : "../img/online13_2.jpg",
+				"price" : "89",
+				"cprice":"278"
+			},
+			{
+				"id" : "shop03",
+				"name" : "Borm Free 防胀气宽口径玻璃奶瓶 160毫升",
+				"src" : "../img/beauty2.jpg",
+				"price" : "72",
+				"cprice":"119"
+			},
+			{
+				"id" : "shop04",
+				"name" : "3件组合装 | P&G 保洁 三倍瞬息量多日夜用液体洗衣液 3包",
+				"src" : "../img/mm3.jpg",
+				"price" : "79",
+				"cprice":"130"
+			},
+			{
+				"id" : "shop05",
+				"name" : "【修颜提亮】LANEIGE 兰芝雪纱丝",
+				"src" : "../img/beauty7.jpg",
+				"price" : "199",
+				"cprice":"377"
+			},
+			{
+				"id" : "shop012",
+				"name" : "Love Cinema 童装球衣球鞋",
+				"src" : "../img/mm4.jpg",
+				"price" : "50",
+				"cprice":"130"
+			},
+			{
+				"id" : "shop012",
+				"name" : "好吃点 经典辅食营养餐 方便又快捷",
+				"src" : "../img/mm2.jpg",
+				"price" : "50",
+				"cprice":"130"
+			},
+			{
+				"id" : "shop012",
+				"name" : "Love Cinema 美白滋润控油保湿黄瓜洗面奶 180毫升/支 2支",
+				"src" : "../img/beauty6.jpg",
+				"price" : "50",
+				"cprice":"130"
+			},
+			{
+				"id" : "shop012",
+				"name" : "Love Cinema 冰环美妆精选套餐 380毫升/罐 2罐",
+				"src" : "../img/beauty4.jpg",
+				"price" : "50",
+				"cprice":"130"
+			},
+			{
+				"id" : "shop012",
+				"name" : "美妆好货 大牌钜惠 心动价99元任选6件",
+				"src" : "../img/beauty5.jpg",
+				"price" : "50",
+				"cprice":"130"
+			}
+			
+			
+		]
+	}
+	
+}

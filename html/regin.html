@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="../css/regin.css"/>
+
+</head>
+<body>
+    
+    <div class="log_head">
+        <img src="../img/online12_03.jpg" class="img1">
+        <img src="../img/login2.jpg" class="img2">
+    </div>
+    <div class="beat">
+        <img src="../img/login5.jpg" class="img3">
+        <a href="javascript: ;"><img src="../img/login6.jpg" class="img4"></a>
+        <div class="fom">
+                <div class="login_top">
+                    <p class="p1">欢迎注册</p>
+                    <p class="p2">已有账号? 马上<a href="login.html">登录></a></p>
+                </div>
+                <div class="teet">
+                    <input class="username" type="text" value="" id="uname" placeholder="请输入手机号" /><span id="s1"></span>
+                    <br/>
+                    <input class="userpassword" type="password" id="upwd" value="" placeholder="请输入密码" /><span id="s2"></span>
+                    <br/>
+                    <input class="verification" type="password" id="verification" value="" placeholder="请再次输入密码" /><span id="s3"></span>
+                    <br/>
+                    <button id="regis">注册</button>	
+                    <br/>
+                    <input type="checkbox" value=""checked="checked" class="check"/>
+                    <p>我同意《服务条款》 和 《网易隐私政策》</p>
+                </div>
+            </div>
+    </div>
+    <iframe name="toppage" width=100% height=480px; marginwidth=0 marginheight=0 frameborder="no" border="0" scrolling="no" src="foot.html" ></iframe> 
+
+    
+</body>
+</html>
+<script src="../js/cookie.js"></script>
+<script src="../js/require.js" data-main="../js/myValidate"></script>
+<script src="../js/jquery-1.11.3.js"></script>
+<script>
+
+
+$("#regis").click(function(){
+		let userJson = {
+			"uname" : $("#uname").val(),
+			"upwd" : $("#upwd").val(),
+            "verification":$("#verification").val()
+		}
+		setCookie( "userinfo" , JSON.stringify( userJson ) );
+        alert( "注册成功" );
+        location.href = "login.html";
+	})
+	
+</script>

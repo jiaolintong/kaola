@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<link rel="stylesheet" href="../css/page.css" />
+
+</head>
+<body>
+        <div class="shopinfo">
+                <!--<img src="img/1.jpg" alt="" />
+                <p>小米1</p>
+                <p>333</p>
+				<p>634</p>-->
+				
+            </div>
+</body>
+</html>
+<script src="../js/jquery-1.11.3.js"></script>
+<script src="../js/cookie.js"></script>
+<script>
+window.onload = function(){
+ 		//获取路径信息
+ 		var str = location.href;//获取路径信息
+ 		//http://127.0.0.1/shopCart1824/page.html?cname=classify002&pid=shop02
+ 		str = str.split( "?" )[1];//"cname=classify002&pid=shop02"
+ 		var arr = str.split("&");
+ 		var cname = arr[0].split("=")[1];
+ 		var pid = arr[1].split("=")[1];
+ 		//请求服务器数据 根据cname和pid的值确定要显示的某个商品
+ 		$.ajax({
+ 			type:"get",
+ 			url:"data.json",
+ 			async:true,
+ 			success :　function(json){
+				 var arr = json[cname].list;
+				 //console.log(arr);
+ 				var str = "";
+ 				//根据pid的值在数组中查找对应要显示的商品
+ 				for( var i = 0 ;i < arr.length ; i++ ){
+ 					if( pid == arr[i].id ){
+ 						str = `<div id="box">
+									<div id="small">
+										<img src="../img/${arr[i].src}" alt="" id="smallImage" />
+										<div id="mask"></div>
+									</div>
+									<div id="big">
+										<img src="../img/${arr[i].src}" id="bigImage" alt="" />
+									</div>
+								</div>
+								<div class="product">
+									<div class="product_1">
+										<p class="pinform"> Love Cinema 美白滋润控油保湿黄瓜洗面奶 让你的脸永久保持湿润 体验泡沫洁面乳，<br>丰盈充满空气感的泡沫质地，
+										让肌肤净透舒适  即刻水润 瞬时平滑。 </p>
+									</div>
+									<div class="product_2">
+										<p class="price">包邮价&nbsp;&nbsp;&nbsp;&nbsp;￥${ arr[i].price }<span>7.6折&nbsp;&nbsp;&nbsp;</span>
+										</p>
+										<p class="promotion">促销&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>N元任选</span></p>
+
+									</div>
+									<div class="produce_3">
+										<p class="freight">运费&nbsp;&nbsp;&nbsp;&nbsp;杭州保税仓 至<span>北京市</span> 免运费</p>
+										<p class="tariff">关税&nbsp;&nbsp;&nbsp;&nbsp;本商品适用关税10%,若订单关税<=50元则免征</p>
+										<p class="number">数量&nbsp;&nbsp;&nbsp;&nbsp;
+											<input type="button" class="left" data-number="1" value="＋">
+											<input type="text" class="shop-count" value="1"/>
+											<input type="button" class="right" data-number="-1" value="－">
+										</p>
+										<p class="buy">立即购买</p>
+										<p class="shopping">加入购物车</p>
+									</div>
+								</div>`;
+						break;
+ 					}
+ 				}
+				 //console.log("${ arr[i].count }","${ arr[i].name }")
+ 				$(".shopinfo").html( str );
+ 			}
+		 });
+		 
+		 //数量变化
+		 function numChange(){
+			 $(".shopinfo").on("click", ".left",function(){
+				var num=parseInt($(".shop-count").val())+1;
+				$(".shop-count").val(num);
+			 })
+			 $(".shopinfo").on("click", ".right",function(){
+				var num=parseInt($(".shop-count").val())-1;
+				
+				if(num<=1){
+					num=1;
+				}
+				$(".shop-count").val(num);
+			 })
+
+		// 	 //获取当前购买的商品信息 存入到cookie中
+		// 	 var arr = [];
+		// 	 $(".shopinfo").on("click",".buy",function(){
+		// 	var json = {};//用来存放一个商品信息
+		// 	    json = {
+		// 			id : $(this).data("id"), //使用data方法获取data-*的自定义属性值
+		// 			src : $(this).data("src"),
+		// 			name:$(this).data("name"),
+		// 			price :$(this).data("price"),
+		// 			count : $(this).data("shop-count")
+		// 		}
+		// 	var flag = true;//假设值为true时  可以向数组中push一个对象
+		// 	//先取出cookie中的所有商品  判断当前存入的商品在cookie中是否存在 如果存在就将商品的数量+1
+		// 	//如果不存在  就将该商品存入到arr数组中
+		// 	var storageTxt = localStorage.getItem("shopinfo");//取出来的是一个数组
+		// 	//console.log(storageTxt);
+		// 	//如果数组中有数据 就判断 
+		// 	if( storageTxt != null ){
+		// 		cookieInfo = JSON.parse( storageTxt );
+		// 		//判断当前购买的商品在cookieInfo中是否存在
+		// 		for( var i = 0 ; i < cookieInfo.length ; i++ ){
+		// 			if( json.id == cookieInfo[i].id ){//说明该json中存入的商品被购买过
+		// 				//将i对应的商品的count值+1
+		// 				cookieInfo[i].count++;
+		// 				arr = cookieInfo;//因为最终是将arr数组存入到cookie中 所以要将cookieInfo中的数据赋值给arr
+		// 				flag = false;
+		// 				break;
+		// 			}
+		// 		}
+		// 	}
+		// 	if( flag ){
+		// 		//将json存入到数组中
+		// 		arr.push( json );
+		// 	}
+		// 	//把数组存入到cookie中
+		// 	localStorage.setItem( "shopinfo" , JSON.stringify( arr ) )
+		// 	if( !confirm("点击确定-继续购买，点击取消-跳转到购物车结算") ){
+		// 		//页面跳转
+		// 		location.href = "shopcar.html";
+		// 	}
+		// }) 
+	}
+		 numChange();
+
+		 function goodsBig() {
+            // 为动态添加的元素添加事件用on
+            
+            $(".shopinfo").on("mouseenter", "#small", function () {
+                $("#mask").show();
+                $("#big").show();
+            }).on("mouseleave", "#small", function () {
+                $("#mask").hide();
+                $("#big").hide();
+            }).on("mousemove", "#small", function (evt) {
+                let e = evt || event;
+                let x = e.pageX - $("#mask").width()/2 - $(".shopinfo").offset().left -100;
+                let y = e.pageY - $("#mask").height()/2 - $(".shopinfo").offset().top -20;
+                let maxL = maxT = $("#small").width() - $("#mask").width();
+                x = Math.min(Math.max(0, x), maxL);
+                y = Math.min(Math.max(0, y), maxT);
+                $("#mask").css({
+                    "left": x,
+                    "top": y
+                });
+                $("#big img").css({
+                    left: -x * ($("#big img").width() / $("#small img").width()),
+                    top: -y * ($("#big img").height() / $("#small img").height())
+                })
+            })
+        }
+        goodsBig();
+	 }
+	 
+</script>
+<script>
+  $(".shopinfo").on("click",".buy",function(){
+	  location.href="shopcar.html";
+  })
+ 
+</script>

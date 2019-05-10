@@ -1,0 +1,94 @@
+*{
+	border: 0;
+	padding: 0;
+	margin: 0;
+}
+
+ul,li,ol{
+	list-style-type: none;
+}
+
+/* ie 6/7 */
+.clearfix{
+	*zoom : 1;
+	*height: 1px;
+}
+/* IE8+ */
+.clearfix:after{
+	content: "";
+	height: 0;
+	clear: both;
+	display: block;
+	visibility: hidden;
+}
+.Eday{
+	
+		width:1110px;
+		height:719px;
+		margin:0 auto;
+		border-bottom:1px solid #A9A9A9; 
+}
+.Eday .nav2{
+	width: 1110px;
+	background: #F6F6F6;
+	margin: 0 auto;
+}
+
+.Eday .nav2  span{
+	display: inline-block;
+	float: left;
+	width: 100px;
+	height: 40px;
+    text-align: center;
+    font-size: 22px;
+	line-height: 40px;
+	padding: 10px 0;
+	cursor: pointer;
+}
+/* .nav2 > span.cur{
+	color: red;
+} */
+.shoplist{
+	width: 1110px;
+	display: block;
+	margin: 0 auto 0;
+
+}
+.shoplist > li{
+	width: 210px;
+	height: 300px;
+	border: 1px solid #d1d1d1;
+	text-align: center;
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+.shoplist > li button{
+	font-size: 14px;
+	margin-top: 10px;
+	cursor: pointer;
+	border: 1px solid #000;
+}
+.shoplist > li img{
+	height: 150px;
+	display: inline-block;
+}
+.shoplist > li p{
+	width: 150px;
+    margin-top: 5px;
+    font-size: 12px;
+}
+.shoplist > li a{
+    text-decoration: none;
+    color:#333333;
+}
+.shoplist > li a .p0{
+    margin-left:26px;
+ }
+.shoplist > li a .p2{
+   margin-left:20px;
+}
+.shoplist > li a .p1{
+    color:#D22147;
+    margin-left:20px;
+}
